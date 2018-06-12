@@ -47,7 +47,7 @@ private int timer;
 			if(axeVel.z<1000){
 				axeObj.transform.Rotate(0,0,rotate);
 				axeVel.z += 2f;
-				axeVel.y += 0.4f;
+				axeVel.y += 1f;
 			}
 			
 			
@@ -64,7 +64,7 @@ private int timer;
 		}
 		if(!axeHeld){
 			timer++;
-			if(timer/100 >= 6){
+			if(timer/100 >= 3){
 				resetAxe();
 			}
 		}
@@ -83,6 +83,7 @@ private int timer;
 	public void resetAxe(){
 		timer = 0;
 		axeHeld = true;
+		axeObj.GetComponent<AxeBladeCollision>().setHitConfirm();
 		axeObj.transform.position = firePos;
 		axeObj.transform.rotation = fireRot;
 		axeRb.constraints = RigidbodyConstraints.FreezeAll;

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - target
+  - targetOuter
+  - targetMid
+  - targetInner
+  - targetBull
   layers:
   - Default
   - TransparentFX
