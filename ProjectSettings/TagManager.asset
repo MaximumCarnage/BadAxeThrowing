@@ -9,6 +9,8 @@ TagManager:
   - targetMid
   - targetInner
   - targetBull
+  - AxeHead
+  - AxeHandle
   layers:
   - Default
   - TransparentFX

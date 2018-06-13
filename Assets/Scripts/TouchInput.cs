@@ -14,11 +14,11 @@ public Vector3 axeVel;
 public Slider powerSlider;
 private float speed = -0.02f;
 private Vector3 firePos,rotateAngle;
-
+private Vector2 firstPressPos,secondPressPos,currentSwipe;
 private Quaternion fireRot;
 private float rotate = -0.3f,zIncrem = 2f,yIncrem = 0.4f;
 public bool axeHeld = true;
-
+private float torque = 1f;
 
 private int timer;
 	// Use this for initialization
@@ -43,7 +43,11 @@ private int timer;
 			speed*=-1;
 		}
 		Debug.Log(timer);
+		if(Input.GetMouseButtonDown(0) == true && axeHeld){
+			firstPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+		}
 		if(Input.GetMouseButton(0) == true && axeHeld){
+			
 			if(axeVel.z<1000){
 				axeObj.transform.Rotate(0,0,rotate);
 				axeVel.z += 2f;
@@ -53,14 +57,23 @@ private int timer;
 			
 		}
 		else if(Input.GetMouseButtonUp(0) == true && axeHeld == true){
+			secondPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+    	 	//create vector from the two points	
+            currentSwipe = new Vector2(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
+            currentSwipe.Normalize();
 			
+			 if(currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
+        	{
+            	axeObj.transform.rotation = fireRot;
+				axeRb.constraints = RigidbodyConstraints.None;
+				axeRb.AddForce( axeVel);
+				axeRb.AddTorque(torque,0f,0f,ForceMode.Impulse);
+				//axeRb.GetComponent<Rigidbody>().AddForce(axeVel);
+				axeHeld = false;
+				axeVel.z = 0;
+				axeVel.y = 0;
+        	}
 			
-			axeObj.transform.rotation = fireRot;
-			axeRb.constraints = RigidbodyConstraints.None;
-			axeRb.GetComponent<Rigidbody>().AddForce(axeVel);
-			axeHeld = false;
-			axeVel.z = 0;
-			axeVel.y = 0;
 		}
 		if(!axeHeld){
 			timer++;
@@ -83,7 +96,7 @@ private int timer;
 	public void resetAxe(){
 		timer = 0;
 		axeHeld = true;
-		axeObj.GetComponent<AxeBladeCollision>().setHitConfirm();
+		axeObj.GetComponentInChildren<AxeBladeCollision>().setHitConfirm();
 		axeObj.transform.position = firePos;
 		axeObj.transform.rotation = fireRot;
 		axeRb.constraints = RigidbodyConstraints.FreezeAll;
