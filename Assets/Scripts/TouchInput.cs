@@ -9,7 +9,7 @@ public Rigidbody axeRb;
 public GameObject axeObj;
 public GameObject axeContainer;
 public Vector3 axeVel;
-
+private bool increasePower = true;
 
 public Slider powerSlider;
 private float speed = -0.02f;
@@ -35,8 +35,22 @@ private int timer;
 		if(axeHeld){
 			axeObj.transform.position =new Vector3(axeObj.transform.position.x+speed,axeObj.transform.position.y,axeObj.transform.position.z);
 		}
+		if(increasePower){
+				axeVel.z += 2f;
+				axeVel.y += 1f;
+		}
+		else if(!increasePower){
+			axeVel.z -= 2f;
+			axeVel.y -= 1f;
+		}
 		
-		if(axeObj.transform.position.x<-3 )
+		 if(axeVel.z == 1000){
+			increasePower = false;
+		}
+		else if(axeVel.z == 0){
+			increasePower = true;
+		}
+		 if(axeObj.transform.position.x<-3 )
 		{
 			speed*=-1;
 		}else if(axeObj.transform.position.x>3){
@@ -46,16 +60,14 @@ private int timer;
 		if(Input.GetMouseButtonDown(0) == true && axeHeld){
 			firstPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
 		}
-		if(Input.GetMouseButton(0) == true && axeHeld){
-			
-			if(axeVel.z<1000){
-				axeObj.transform.Rotate(0,0,rotate);
-				axeVel.z += 2f;
-				axeVel.y += 1f;
-			}
+		
+		
+		// if(Input.GetMouseButton(0) == true && axeHeld){
 			
 			
-		}
+			
+			
+		// }
 		else if(Input.GetMouseButtonUp(0) == true && axeHeld == true){
 			secondPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
     	 	//create vector from the two points	
