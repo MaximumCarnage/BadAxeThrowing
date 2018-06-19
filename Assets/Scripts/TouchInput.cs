@@ -20,6 +20,7 @@ private float rotate = -0.3f,zIncrem = 2f,yIncrem = 0.4f;
 public bool axeHeld = true;
 private float torque = 1f;
 
+
 private int timer;
 	// Use this for initialization
 	void Start () {

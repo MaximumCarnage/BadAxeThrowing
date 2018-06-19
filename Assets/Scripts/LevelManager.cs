@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour {
 			levels[0].SetActive(false);
 			levels[1].SetActive(true);
 			levels[2].SetActive(false);
-		}else{
+		}else if(m_col.score >= 10){
 			levels[0].SetActive(false);
 			levels[1].SetActive(false);
 			levels[2].SetActive(true);
