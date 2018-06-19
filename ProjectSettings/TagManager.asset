@@ -11,6 +11,7 @@ TagManager:
   - targetBull
   - AxeHead
   - AxeHandle
+  - level
   layers:
   - Default
   - TransparentFX

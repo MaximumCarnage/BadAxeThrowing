@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class AxeBladeCollision : MonoBehaviour {
-	private float score;
+	public float score;
 	private float outerPoints = 10 ;
 	private float innerPoints = 20 ;
 	private float midPoints = 30;
