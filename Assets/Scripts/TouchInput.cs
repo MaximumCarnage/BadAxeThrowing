@@ -11,9 +11,9 @@ public GameObject axeContainer;
 public Vector3 axeVel;
 private bool increasePower = true;
 
-public int _thrown = 0;
+// public int _thrown = 0;
 
-public int _thrownMax = 5;
+// public int _thrownMax = 5;
 
 
 public Slider powerSlider;
@@ -36,11 +36,11 @@ private int timer;
 	
 	// Update is called once per frame
 	void Update () {
-	//	powerSlider.value = axeVel.z/1000;
+		
 		if(axeHeld){
+			powerSlider.value = axeVel.z/1000;
 			axeObj.transform.position =new Vector3(axeObj.transform.position.x+speed,axeObj.transform.position.y,axeObj.transform.position.z);
-		}
-		if(increasePower){
+			if(increasePower){
 				axeVel.z += 2f;
 				axeVel.y += 1f;
 		}
@@ -48,6 +48,8 @@ private int timer;
 			axeVel.z -= 2f;
 			axeVel.y -= 1f;
 		}
+		}
+		
 		
 		 if(axeVel.z == 1000){
 			increasePower = false;
@@ -110,15 +112,15 @@ private int timer;
 		
 	}
 
-	public void resetThrow(){
-			_thrown++;
-		Debug.Log(_thrown);
+	// public void resetThrow(){
+	// 		_thrown++;
+	// 	Debug.Log(_thrown);
 		
-		if(_thrown >= 5){
+	// 	if(_thrown >= 5){
 			
-			_thrown = 0;
-		}
-	}
+	// 		_thrown = 0;
+	// 	}
+	// }
 
 	public void resetAxe(){
 		timer = 0;
@@ -128,7 +130,7 @@ private int timer;
 		axeObj.transform.rotation = fireRot;
 		axeRb.constraints = RigidbodyConstraints.FreezeAll;
 		axeRb.velocity = Vector3.zero;
-		resetThrow();
+		//resetThrow();
 	
 	}
 }
