@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour {
 
 	public GameObject [] levels;
 
-	public AxeBladeCollision m_col;
+	public int _levelNum = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -25,21 +25,47 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void levelChange (){
-		if(m_col.score == 0){
+			//Press "e" to switch levels
+			switch (_levelNum) {
+		case 3:
+			levels[0].SetActive(true);
+			levels[1].SetActive(false);
+			levels[2].SetActive(false);
+			break;
+		case 2:
 			levels[0].SetActive(false);
 			levels[1].SetActive(true);
 			levels[2].SetActive(false);
-		}else if(m_col.score >= 10){
+			break;
+		case 1:
 			levels[0].SetActive(false);
 			levels[1].SetActive(false);
 			levels[2].SetActive(true);
-		}
+			break;
+
+		default:
+			levels[0].SetActive(false);
+			levels[1].SetActive(false);
+			levels[2].SetActive(false);
+			break;
+
+			}
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
+		if(Input.GetKeyDown("e") == true){
+			_levelNum++;
+		}
+		
+		if(_levelNum > levels.Length){
+			_levelNum = 0;
+		}
 
-		levelChange();
+		levelChange ();
+		
 		
 	}
 }
