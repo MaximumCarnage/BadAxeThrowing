@@ -11,6 +11,11 @@ public GameObject axeContainer;
 public Vector3 axeVel;
 private bool increasePower = true;
 
+public int _thrown = 0;
+
+public int _thrownMax = 5;
+
+
 public Slider powerSlider;
 private float speed = -0.02f;
 private Vector3 firePos,rotateAngle;
@@ -19,6 +24,7 @@ private Quaternion fireRot;
 private float rotate = -0.3f,zIncrem = 2f,yIncrem = 0.4f;
 public bool axeHeld = true;
 private float torque = 1f;
+
 
 private int timer;
 	// Use this for initialization
@@ -30,8 +36,7 @@ private int timer;
 	
 	// Update is called once per frame
 	void Update () {
-		powerSlider.value = axeVel.z/1000;
-		
+	//	powerSlider.value = axeVel.z/1000;
 		if(axeHeld){
 			axeObj.transform.position =new Vector3(axeObj.transform.position.x+speed,axeObj.transform.position.y,axeObj.transform.position.z);
 		}
@@ -105,6 +110,16 @@ private int timer;
 		
 	}
 
+	public void resetThrow(){
+			_thrown++;
+		Debug.Log(_thrown);
+		
+		if(_thrown >= 5){
+			
+			_thrown = 0;
+		}
+	}
+
 	public void resetAxe(){
 		timer = 0;
 		axeHeld = true;
@@ -113,5 +128,7 @@ private int timer;
 		axeObj.transform.rotation = fireRot;
 		axeRb.constraints = RigidbodyConstraints.FreezeAll;
 		axeRb.velocity = Vector3.zero;
+		resetThrow();
+	
 	}
 }
