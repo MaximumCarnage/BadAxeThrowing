@@ -15,6 +15,7 @@ public class AxeBladeCollision : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other)
 	{	
+		Debug.Log(score);
 		if(hitConfirm == false){
 			if(other.gameObject.tag == "targetOuter"){
 				axeRb.constraints = RigidbodyConstraints.FreezeAll;
@@ -32,7 +33,7 @@ public class AxeBladeCollision : MonoBehaviour {
 				axeRb.constraints = RigidbodyConstraints.FreezeAll;
 				score += bullPoints;
 			}
-			scoreText.text = "Score: " + score;
+		//	scoreText.text = "Score: " + score;
 			hitConfirm = true;
 		}
 

@@ -12,6 +12,7 @@ TagManager:
   - AxeHead
   - AxeHandle
   - level
+  - axe
   layers:
   - Default
   - TransparentFX

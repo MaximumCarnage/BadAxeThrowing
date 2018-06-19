@@ -15,7 +15,6 @@ public class AxeManager : MonoBehaviour {
 		
 		for(int i = 0; i< axes.Length; i++){
 			
-			Debug.Log("axe "+i+" is named "+ axes[i].name);
 			
 		}		
 
@@ -24,7 +23,7 @@ public class AxeManager : MonoBehaviour {
 			axes[2].SetActive(false);
 	}
 
-		void levelChange (){
+		void axeChange (){
 			//Press "w" to switch axes
 			switch (_axeNum) {
 		case 3:
@@ -64,7 +63,7 @@ public class AxeManager : MonoBehaviour {
 			_axeNum = 0;
 		}
 
-		levelChange ();
+		axeChange ();
 		
 		
 	}
