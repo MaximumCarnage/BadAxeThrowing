@@ -68,7 +68,7 @@ public class AxeManager : MonoBehaviour {
 		}
 		
 		if(_axeNum > axes.Length){
-			_axeNum = 0;
+			_axeNum = 1;
 		}
 
 		if(_axeNum <= 0){
