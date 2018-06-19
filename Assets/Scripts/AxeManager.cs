@@ -6,7 +6,7 @@ public class AxeManager : MonoBehaviour {
 
 	public GameObject [] axes;
 
-	public int _axeNum = 0;
+	public int _axeNum = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -51,6 +51,14 @@ public class AxeManager : MonoBehaviour {
 			}
 		
 	}
+
+	public void axeUp(){
+		_axeNum++;
+	}
+
+		public void axedown(){
+		_axeNum--;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -61,6 +69,10 @@ public class AxeManager : MonoBehaviour {
 		
 		if(_axeNum > axes.Length){
 			_axeNum = 0;
+		}
+
+		if(_axeNum <= 0){
+			_axeNum = axes.Length;
 		}
 
 		axeChange ();
