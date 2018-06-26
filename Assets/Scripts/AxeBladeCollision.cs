@@ -33,7 +33,7 @@ public class AxeBladeCollision : MonoBehaviour {
 				axeRb.constraints = RigidbodyConstraints.FreezeAll;
 				score += bullPoints;
 			}
-		//	scoreText.text = "Score: " + score;
+			scoreText.text = "Score: " + score;
 			hitConfirm = true;
 		}
 

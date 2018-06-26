@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour {
 		for(int i = 0; i< levels.Length; i++){
 
 		}
-
+			
 			levels[0].SetActive(false);
 			levels[1].SetActive(false);
 			levels[2].SetActive(false);
@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour {
 			levels[2].SetActive(false);
 			levels[3].SetActive(false);
 			break;
-
+			
 			}
 		
 	}

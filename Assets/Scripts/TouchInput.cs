@@ -11,9 +11,9 @@ public GameObject axeContainer;
 public Vector3 axeVel;
 private bool increasePower = true;
 
-// public int _thrown = 0;
+public int _thrown = 0;
 
-// public int _thrownMax = 5;
+public int _thrownMax = 5;
 
 
 public Slider powerSlider;
@@ -112,15 +112,15 @@ private int timer;
 		
 	}
 
-	// public void resetThrow(){
-	// 		_thrown++;
-	// 	Debug.Log(_thrown);
+	public void resetThrow(){
+			_thrown++;
+		Debug.Log(_thrown);
 		
-	// 	if(_thrown >= 5){
+		if(_thrown >= 5){
 			
-	// 		_thrown = 0;
-	// 	}
-	// }
+			_thrown = 0;
+		}
+	}
 
 	public void resetAxe(){
 		timer = 0;
@@ -130,7 +130,7 @@ private int timer;
 		axeObj.transform.rotation = fireRot;
 		axeRb.constraints = RigidbodyConstraints.FreezeAll;
 		axeRb.velocity = Vector3.zero;
-		//resetThrow();
+		resetThrow();
 	
 	}
 }

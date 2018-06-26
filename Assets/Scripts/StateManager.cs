@@ -39,7 +39,6 @@ public class StateManager : MonoBehaviour {
 		m_gameStates[(int)m_activeState].SetActive(false);
 		m_activeState = GameStates.PLAY;
 		m_gameStates[(int)m_activeState].SetActive(true);
-		Cursor.visible = false;
 		
 	}
 

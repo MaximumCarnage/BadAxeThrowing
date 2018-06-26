@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AxeManager : MonoBehaviour {
 
@@ -53,15 +54,19 @@ public class AxeManager : MonoBehaviour {
 	}
 
 	public void axeUp(){
+		Debug.Log(_axeNum);
 		_axeNum++;
 	}
 
 		public void axedown(){
+		Debug.Log(_axeNum);
 		_axeNum--;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+
 		
 		if(Input.GetKeyDown("w") == true){
 			_axeNum++;

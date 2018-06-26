@@ -13,6 +13,7 @@ TagManager:
   - AxeHandle
   - level
   - axe
+  - menu
   layers:
   - Default
   - TransparentFX
